@@ -3,6 +3,7 @@ package sqlSystem;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
@@ -20,13 +21,19 @@ public class Main {
 			DriverManager.registerDriver(driver);
 			conn = DriverManager.getConnection(url, user, pass);
 			Statement st = (Statement) conn.createStatement();
-			int m = ((java.sql.Statement) st).executeUpdate(sqlDB);
-			if (m >= 1) {
-				System.out.println("Created table in given database...");
-				return true;
-			} else {
-				System.out.println(" table already Created in given database...");
-			}
+		
+			try{	
+				st.executeUpdate(sqlDB);
+				   System.out.println("Table Created Successfully");   	 
+			      } catch (SQLException e) {
+			         e.printStackTrace();
+			      }
+//			if (m >= 1) {
+//				System.out.println("Created table in given database...");
+//				return true;
+//			} else {
+//				System.out.println(" table already Created in given database...");
+//			}
 			conn.close();
 		}
 		catch (Exception ex) {
@@ -51,13 +58,18 @@ public class Main {
 			DriverManager.registerDriver(driver);
 			conn = DriverManager.getConnection(url, user, pass);
 			Statement st = (Statement) conn.createStatement();
-			int m = ((java.sql.Statement) st).executeUpdate(sqlDB);
-			if (m >= 1) {
-				System.out.println("Created table in given database...");
-				return true;
-			} else {
-				System.out.println(" table already Created in given database...");
-			}
+			try{	
+				st.executeUpdate(sqlDB);
+				   System.out.println("Table Created Successfully");   	 
+			      } catch (SQLException e) {
+			         e.printStackTrace();
+			      }
+//			if (m >= 1) {
+//				System.out.println("Created table in given database...");
+//				return true;
+//			} else {
+//				System.out.println(" table already Created in given database...");
+//			}
 			conn.close();
 		}
 		catch (Exception ex) {
